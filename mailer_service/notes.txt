@@ -1,0 +1,77 @@
+1. What is Nodemailer?
+- Nodemailer is a Node.js library used to send emails from applications.
+- It supports sending emails using Gmail, Outlook, custom SMTP servers, etc.
+- It can send plain text emails, HTML emails, attachments, and multiple recipients.
+- It is commonly used for OTP verification, registration emails, password resets, and notifications.
+
+
+2. What is SMTP?
+SMTP (Simple Mail Transfer Protocol) is a communication protocol used to send emails over the internet.
+- SMTP handles sending and transferring emails.
+- It communicates between email clients and mail servers.
+- It uses authentication to verify the sender.
+- It can use encryption to protect email communication.
+
+3. How Nodemailer and SMTP Work Together
+
+1. User submits an email request through the application.
+2. Node.js receives the request.
+3. Nodemailer prepares the email.
+4. Nodemailer connects to the SMTP server.
+5. SMTP server authenticates the sender.
+6. SMTP server transfers the email to the recipient's mail server.
+7. Recipient receives the email in their inbox
+
+
+
+4. Important SMTP Ports
+Port	Purpose
+25	SMTP server-to-server communication
+465	SMTP over implicit SSL/TLS
+587	SMTP with STARTTLS
+2525	Alternative SMTP port supported by some providers
+
+
+npm install nodemailer
+
+
+6. Creating SMTP Transporter
+The transporter defines how Node.js connects to the SMTP server.
+const nodemailer = require('nodemailer');
+
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+        user: "your-email@gmail.com",
+        pass: "your-app-password"
+    }
+});
+
+
+9. Important Properties of sendMail()
+Property	Description
+from	Sender email address
+to	Recipient email address
+cc	Carbon copy recipients
+bcc	Blind carbon copy recipients
+subject	Email subject
+text	Plain text email
+html	HTML email content
+attachments	Files attached to email
+replyTo	Reply-to email address
+
+
+
+10. What is the Difference Between Text and HTML?
+Text email:
+text: "Welcome to Bennett University"
+
+
+HTML email:
+html: `
+    <h2>Welcome!</h2>
+    <p>Admissions are now open.</p>
+    <a href="https://www.bennett.edu.in/">Apply Now</a>
+`
